@@ -1,0 +1,31 @@
+{
+  "name": "morsecodetranslator",
+  "version": "1.0.0",
+  "description": "Morse code translator",
+  "main": "morse.js",
+  "scripts": {
+    "test": "test",
+    "build": "babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piotrbartnik/morse-code-translator.git"
+  },
+  "keywords": [
+    "morse",
+    "code",
+    "translator",
+    "decoding"
+  ],
+  "author": "Piotr Bartnik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piotrbartnik/morse-code-translator/issues"
+  },
+  "homepage": "https://github.com/piotrbartnik/morse-code-translator#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2"
+  }
+}
