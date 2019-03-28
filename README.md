@@ -11,9 +11,8 @@ JavaScript written in ES6. Transplied with babel.
 
 ## Instalation 
 
-``
+`` 
 npm install
-
 ``
 
 ## Test 
