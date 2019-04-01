@@ -7,7 +7,7 @@ Backward translation in progress.
 
 ## Tools  
 
-JavaScript written in ES6. Transplied with babel.
+JavaScript written in ES6. Transpiled with babel.
 
 ## Instalation 
 
