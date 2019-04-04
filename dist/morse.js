@@ -2,7 +2,22 @@
 
 var textInput = document.getElementById("input");
 var btn = document.getElementById("btn");
+var btnPlay = document.getElementById("btnPlay");
 var textOutput = document.getElementById("output");
+var a = new AudioContext();
+
+var sound = function sound(vol, freq, duration) {
+  var v = a.createOscillator();
+  var u = a.createGain();
+  v.connect(u);
+  v.frequency.value = freq;
+  v.type = "square";
+  u.connect(a.destination);
+  u.gain.value = vol * 0.01;
+  v.start(a.currentTime);
+  v.stop(a.currentTime + duration * 0.001);
+};
+
 var morseAlphabet = {
   " ": "/",
   "0": "-----",
@@ -85,6 +100,10 @@ var output = function output() {
   }
 
   textOutput.innerHTML = outputArray.join(' ');
+
+  if (textInput.value) {
+    document.querySelector("#btnPlay").style.display = 'block';
+  }
 };
 
 textInput.addEventListener("keydown", function () {

@@ -87,3 +87,7 @@ body {
 .kata__date {
   font-size: 14px;
   color: #dbacac; }
+
+  #btnPlay {
+    display: none;
+  }
