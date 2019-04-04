@@ -90,10 +90,10 @@ textInput.addEventListener("keyup", function () {
   textInput.style.height = "5px";
   textInput.style.height = textInput.scrollHeight + "px";
 });
+var outputArray = [];
 
 var output = function output() {
   var inputArray = textInput.value.toLowerCase().split("");
-  var outputArray = [];
 
   for (var i = 0; i < inputArray.length; i++) {
     outputArray.push(morseAlphabet[inputArray[i]]);
@@ -119,3 +119,26 @@ document.addEventListener("keyup", function (event) {
   }
 });
 btn.addEventListener('click', output);
+btnPlay.addEventListener('click', function () {
+  outputArray = outputArray.join('');
+  console.log(outputArray);
+
+  for (var i = 0; i < outputArray.length; i++) {
+    var time = 0;
+
+    if (outputArray[i] === '.') {
+      console.log(outputArray[i]);
+      window.setTimeout(function () {
+        sound(100, 440, 300);
+      }, time);
+      time += 300;
+      console.log(time);
+    } else {
+      window.setTimeout(function () {
+        sound(100, 540, 400);
+      }, time);
+      time += 400;
+      console.log(time);
+    }
+  }
+});

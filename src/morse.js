@@ -90,10 +90,9 @@ textInput.addEventListener("keyup", () => {
   textInput.style.height = "5px";
   textInput.style.height = textInput.scrollHeight + "px";
 });
-
+let outputArray = [];
 const output = () => {
-  let inputArray = textInput.value.toLowerCase().split("");
-  let outputArray = [];
+  let inputArray = textInput.value.toLowerCase().split("");  
   for (let i = 0; i < inputArray.length; i++) {
     outputArray.push(morseAlphabet[inputArray[i]])
   }
@@ -117,3 +116,21 @@ document.addEventListener("keyup", (event) => {
 });
 
 btn.addEventListener('click', output);
+btnPlay.addEventListener('click', () => {
+    outputArray = outputArray.join('');
+    console.log(outputArray);
+    for (let i = 0; i < outputArray.length; i++) {
+      let time = 0;
+      if (outputArray[i] === '.') {
+        console.log(outputArray[i])
+        window.setTimeout(()=>{sound(100, 440, 300)}, time);
+        time += 300;
+        console.log(time)
+      } else {
+        window.setTimeout(()=>{sound(100, 540, 400)}, time);
+        time += 400;
+        console.log(time)
+      }
+    }
+  
+});
