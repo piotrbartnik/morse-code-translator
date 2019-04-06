@@ -7,7 +7,10 @@ Backward translation in progress.
 
 ## Tools  
 
-JavaScript written in ES6. Transpiled with babel.
+![HTML5](https://icongr.am/devicon/html5-original-wordmark.svg)
+ ![css](https://icongr.am/devicon/css-original.svg)
+ ![JS](https://icongr.am/devicon/javascript-original.svg)
+ ![babel](https://icongr.am/devicon/babel-original.svg)
 
 ## Instalation 
 
