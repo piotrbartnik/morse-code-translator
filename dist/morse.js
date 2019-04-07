@@ -120,13 +120,13 @@ document.addEventListener("keyup", function (event) {
 });
 btn.addEventListener('click', output);
 btnPlay.addEventListener('click', function () {
-  outputArray = outputArray.join(' ');
+  var playMorseString = outputArray.join(' ');
   var soundArray = [];
 
-  for (var _i = 0; _i < outputArray.length; _i++) {
-    if (outputArray[_i] === '.') {
-      soundArray.push([100, 440, 30]);
-    } else if (outputArray[_i] === '-') {
+  for (var _i = 0; _i < playMorseString.length; _i++) {
+    if (playMorseString[_i] === '.') {
+      soundArray.push([100, 440, 100]);
+    } else if (playMorseString[_i] === '-') {
       soundArray.push([100, 440, 200]);
     } else {
       soundArray.push([100, 0, 200]);
@@ -134,7 +134,7 @@ btnPlay.addEventListener('click', function () {
   }
 
   for (var i = 0; i < soundArray.length; i++) {
-    var time = 200;
+    var time = 300;
     setTimeout(function (x) {
       var j = i;
       return function () {
@@ -142,6 +142,4 @@ btnPlay.addEventListener('click', function () {
       };
     }(i), time * i);
   }
-
-  outputArray = [];
 });

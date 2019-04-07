@@ -117,13 +117,13 @@ document.addEventListener("keyup", (event) => {
 
 btn.addEventListener('click', output);
 btnPlay.addEventListener('click', () => {
-  outputArray = outputArray.join(' ');
+  let playMorseString = outputArray.join(' ');
   let soundArray = [];
     
-    for (let i = 0; i < outputArray.length; i++) {
-      if (outputArray[i] === '.') {
-        soundArray.push([100, 440, 30])
-      } else if (outputArray[i] === '-'){
+    for (let i = 0; i < playMorseString.length; i++) {
+      if (playMorseString[i] === '.') {
+        soundArray.push([100, 440, 100])
+      } else if (playMorseString[i] === '-'){
         soundArray.push([100, 440, 200])
       } else {
         soundArray.push([100, 0, 200])
@@ -131,12 +131,11 @@ btnPlay.addEventListener('click', () => {
     }
 
     for (var i = 0; i < soundArray.length; i++) {    
-      let time = 200;
+      let time = 300;
       setTimeout(function(x) { 
         let j = i;
         return function() { 
           sound(soundArray[j][0], soundArray[j][1],soundArray[j][2]);  
           }; }(i), time*i);
     }
-  outputArray = [];
 });
