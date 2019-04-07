@@ -3,18 +3,18 @@ const btn = document.getElementById("btn");
 const btnPlay = document.getElementById("btnPlay");
 const textOutput = document.getElementById("output");
 
-let a = new AudioContext()
+let ac = new AudioContext()
 
 let sound = (vol, freq, duration) => {
-  let v = a.createOscillator()
-  let u = a.createGain()
+  let v = ac.createOscillator()
+  let u = ac.createGain()
   v.connect(u)
   v.frequency.value = freq
   v.type = "square"
-  u.connect(a.destination)
+  u.connect(ac.destination)
   u.gain.value = vol * 0.01
-  v.start(a.currentTime)
-  v.stop(a.currentTime + duration * 0.001)
+  v.start(ac.currentTime)
+  v.stop(ac.currentTime + duration * 0.001)
 }
 
 const morseAlphabet = {
@@ -117,20 +117,27 @@ document.addEventListener("keyup", (event) => {
 
 btn.addEventListener('click', output);
 btnPlay.addEventListener('click', () => {
-    outputArray = outputArray.join('');
-    console.log(outputArray);
+  outputArray = outputArray.join(' ');
+  let soundArray = [];
+    
     for (let i = 0; i < outputArray.length; i++) {
-      let time = 0;
       if (outputArray[i] === '.') {
-        console.log(outputArray[i])
-        window.setTimeout(()=>{sound(100, 440, 300)}, time);
-        time += 300;
-        console.log(time)
+        soundArray.push([100, 440, 400])
+      } else if (outputArray[i] === '-'){
+        soundArray.push([100, 540, 500])
       } else {
-        window.setTimeout(()=>{sound(100, 540, 400)}, time);
-        time += 400;
-        console.log(time)
+        soundArray.push([100, 0, 500])
       }
+    }
+
+    for (var i = 0; i <= soundArray.length; i++) {    
+      let time = 1000;
+      setTimeout(function(x) { 
+        let j = i;
+        return function() { 
+          console.log(j)
+          sound(soundArray[j][0], soundArray[j][1],soundArray[j][2]);  
+          }; }(i), time*i);
     }
   
 });

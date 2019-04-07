@@ -4,18 +4,18 @@ var textInput = document.getElementById("input");
 var btn = document.getElementById("btn");
 var btnPlay = document.getElementById("btnPlay");
 var textOutput = document.getElementById("output");
-var a = new AudioContext();
+var ac = new AudioContext();
 
 var sound = function sound(vol, freq, duration) {
-  var v = a.createOscillator();
-  var u = a.createGain();
+  var v = ac.createOscillator();
+  var u = ac.createGain();
   v.connect(u);
   v.frequency.value = freq;
   v.type = "square";
-  u.connect(a.destination);
+  u.connect(ac.destination);
   u.gain.value = vol * 0.01;
-  v.start(a.currentTime);
-  v.stop(a.currentTime + duration * 0.001);
+  v.start(ac.currentTime);
+  v.stop(ac.currentTime + duration * 0.001);
 };
 
 var morseAlphabet = {
@@ -120,25 +120,27 @@ document.addEventListener("keyup", function (event) {
 });
 btn.addEventListener('click', output);
 btnPlay.addEventListener('click', function () {
-  outputArray = outputArray.join('');
-  console.log(outputArray);
+  outputArray = outputArray.join(' ');
+  var soundArray = [];
 
-  for (var i = 0; i < outputArray.length; i++) {
-    var time = 0;
-
-    if (outputArray[i] === '.') {
-      console.log(outputArray[i]);
-      window.setTimeout(function () {
-        sound(100, 440, 300);
-      }, time);
-      time += 300;
-      console.log(time);
+  for (var _i = 0; _i < outputArray.length; _i++) {
+    if (outputArray[_i] === '.') {
+      soundArray.push([100, 440, 400]);
+    } else if (outputArray[_i] === '-') {
+      soundArray.push([100, 540, 500]);
     } else {
-      window.setTimeout(function () {
-        sound(100, 540, 400);
-      }, time);
-      time += 400;
-      console.log(time);
+      soundArray.push([100, 0, 500]);
     }
+  }
+
+  for (var i = 0; i <= soundArray.length; i++) {
+    var time = 1000;
+    setTimeout(function (x) {
+      var j = i;
+      return function () {
+        console.log(j);
+        sound(soundArray[j][0], soundArray[j][1], soundArray[j][2]);
+      };
+    }(i), time * i);
   }
 });
