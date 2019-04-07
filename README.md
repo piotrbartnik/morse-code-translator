@@ -1,9 +1,10 @@
-## Morse code translator
+Morse code translator
+========================
+[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://piotrbartnik.github.io/morse-code-translator/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Translate everything to morse code.
 Backward translation in progress.
-
-[Live version](https://piotrbartnik.github.io/morse-code-translator/)
 
 ## Tools  
 
