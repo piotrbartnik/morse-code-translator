@@ -122,22 +122,21 @@ btnPlay.addEventListener('click', () => {
     
     for (let i = 0; i < outputArray.length; i++) {
       if (outputArray[i] === '.') {
-        soundArray.push([100, 440, 400])
+        soundArray.push([100, 440, 30])
       } else if (outputArray[i] === '-'){
-        soundArray.push([100, 540, 500])
+        soundArray.push([100, 440, 200])
       } else {
-        soundArray.push([100, 0, 500])
+        soundArray.push([100, 0, 200])
       }
     }
 
-    for (var i = 0; i <= soundArray.length; i++) {    
-      let time = 1000;
+    for (var i = 0; i < soundArray.length; i++) {    
+      let time = 200;
       setTimeout(function(x) { 
         let j = i;
         return function() { 
-          console.log(j)
           sound(soundArray[j][0], soundArray[j][1],soundArray[j][2]);  
           }; }(i), time*i);
     }
-  
+  outputArray = [];
 });

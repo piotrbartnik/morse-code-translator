@@ -125,22 +125,23 @@ btnPlay.addEventListener('click', function () {
 
   for (var _i = 0; _i < outputArray.length; _i++) {
     if (outputArray[_i] === '.') {
-      soundArray.push([100, 440, 400]);
+      soundArray.push([100, 440, 30]);
     } else if (outputArray[_i] === '-') {
-      soundArray.push([100, 540, 500]);
+      soundArray.push([100, 440, 200]);
     } else {
-      soundArray.push([100, 0, 500]);
+      soundArray.push([100, 0, 200]);
     }
   }
 
-  for (var i = 0; i <= soundArray.length; i++) {
-    var time = 1000;
+  for (var i = 0; i < soundArray.length; i++) {
+    var time = 200;
     setTimeout(function (x) {
       var j = i;
       return function () {
-        console.log(j);
         sound(soundArray[j][0], soundArray[j][1], soundArray[j][2]);
       };
     }(i), time * i);
   }
+
+  outputArray = [];
 });
