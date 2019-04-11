@@ -92,6 +92,9 @@ textInput.addEventListener("keyup", () => {
 });
 let outputArray = [];
 const output = () => {
+  if (outputArray.length > 0) {
+    outputArray = [];
+  }
   let inputArray = textInput.value.toLowerCase().split("");  
   for (let i = 0; i < inputArray.length; i++) {
     outputArray.push(morseAlphabet[inputArray[i]])
