@@ -41,7 +41,9 @@ body {
     cursor: pointer;
     display: block;
     margin: 0 auto;
-    outline: none; }
+    outline: none; 
+    margin-top: 20px;
+  }
   .container__output {
     padding-top: 20px; }
   .container__button:hover {

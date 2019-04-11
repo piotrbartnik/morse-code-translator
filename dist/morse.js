@@ -93,6 +93,10 @@ textInput.addEventListener("keyup", function () {
 var outputArray = [];
 
 var output = function output() {
+  if (outputArray.length > 0) {
+    outputArray = [];
+  }
+
   var inputArray = textInput.value.toLowerCase().split("");
 
   for (var i = 0; i < inputArray.length; i++) {
